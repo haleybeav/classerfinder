@@ -6,7 +6,8 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5",
-    "simple-flexbox": "^1.2.0"
+    "simple-flexbox": "^1.2.0",
+    "unstated": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
