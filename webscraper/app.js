@@ -117,6 +117,17 @@ function buildTimeObj(string){
 
 
             const rowTwo = await classtr[i + 1].$$("td");
+
+            //
+            const gurel = await rowTwo[1].$("font"); 
+            const gurtext =  await page.evaluate(element => element.textContent, gurel);
+            
+            let gurArray = gurtext.split(" ");
+            record.gur = gurArray.filter( (el)=> {
+                return el != "";
+            });
+
+
             //time
             const timeel = await rowTwo[2].$("font");
             let timeString = await page.evaluate(element => element.textContent, timeel);
