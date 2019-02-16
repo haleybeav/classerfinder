@@ -6,6 +6,57 @@ const CFURL = "https://admin.wwu.edu/pls/wwis/wwsktime.SelClass";
 
 let classList = [];
 
+
+function buildTimeObj(string){
+    
+    obj = {
+        TBA: false,
+        M: null,
+        T: null,
+        W: null,
+        R: null,
+        F: null,
+    }
+
+    if (string == "TBA"){
+        obj.TBA = true;
+        return obj;
+    }
+
+    let words = string.split(" ");
+    let days = words[1];
+    let ending = words[4];
+
+    let times =  words[3].split("-");
+
+    if (ending == "pm"){
+        
+        
+        let ehrs =  times[1].split(":")[0];
+        let emins =  times[1].split(":")[1];
+        ehrs = parseInt(ehrs);
+        ehrs = ehrs + 12;
+
+        let shrs = times[0].split(":")[0];
+        let smins =  times[0].split(":")[1];
+        shrs = parseInt(shrs);
+
+        if (ehrs - shrs > 12){
+            shrs = shrs + 12;
+        }
+        times[0] = shrs + ":" + smins;
+        times[1] = ehrs + ":" + emins;
+            
+    }
+
+    for(let i = 0; i < days.length; i++){
+        obj[days[i]] = [times[0], times[1]];
+    }
+
+    return obj;
+}
+
+
 (async () => {
     const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
@@ -38,7 +89,10 @@ let classList = [];
             const rowOne = await classtr[i].$$("td");
             const classname = await rowOne[1].$("a");
             
-            record.classname =  await page.evaluate(element => element.textContent, classname);
+            let classnametext =  await page.evaluate(element => element.textContent, classname);
+
+            record.dept = classnametext.split(" ")[0];
+            record.course = classnametext.split(" ")[1];
 
             //title "Financial Accounting"
             const titleel = await rowOne[2].$("font");
@@ -65,7 +119,8 @@ let classList = [];
             const rowTwo = await classtr[i + 1].$$("td");
             //time
             const timeel = await rowTwo[2].$("font");
-            record.time =  await page.evaluate(element => element.textContent, timeel);
+            let timeString = await page.evaluate(element => element.textContent, timeel);
+            record.time =  buildTimeObj(timeString);
 
             //location
             const locationel = await rowTwo[3].$("font");
