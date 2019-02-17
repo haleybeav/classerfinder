@@ -52,10 +52,12 @@ const Course=({course, day, color, opacity})=>{
         "position": "absolute",
         "borderRadius": "4px",
         "margin": "2px",
-        "opacity": opacity
+        "opacity": opacity,
+        "color": "white",
+        "font-weight": "bold"
     };
 
-    return(<div className='class' style={style} ></div>);
+    return(<div className='class' style={style} >{course.title}</div>);
 
 }
 

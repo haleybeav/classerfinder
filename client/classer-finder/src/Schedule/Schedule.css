@@ -16,13 +16,13 @@
 }
 
 .day-group{
-    width: 70%;
+    width: 60%;
     display: flex;
 }
 
 .class-list{
     margin-left: 10px;
-    width: 30%;
+    width: 40%;
 }
 
 .times{
@@ -55,7 +55,7 @@
 .remove-button{
     font-weight: 300;
     width: 30px;
-    background-color: #FF372A;
+    background-color: #ED4B23;
     float: right;
 }
 
@@ -66,4 +66,10 @@
 
 .course-record{
     margin-bottom: 5px;
+}
+
+.notch{
+    width: 9px;
+    height: 2px;
+    background-color: black;
 }

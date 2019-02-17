@@ -12,6 +12,11 @@ function myFunction(crn) {
 
 const Schedule = ({courses, removeCourse, courseToPreview}) => {
 
+
+    const notches = [];
+    for(let i = 0; i < 10; i++){
+        notches.push(i);
+    }
     let i = -1;
     let classlist = courses.map((course)=>{
         i = i + 1;
@@ -32,7 +37,7 @@ const Schedule = ({courses, removeCourse, courseToPreview}) => {
                     <div>8am</div>                     
                     <div>12pm</div>                    
                     <div>6pm</div> 
-                </div>
+                </div>             
                 <div className="day-group">
                 <Day day="M" data={courses} preview={courseToPreview} />
                 <Day day="T" data={courses} preview={courseToPreview}  />

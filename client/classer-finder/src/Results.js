@@ -33,7 +33,7 @@ const Results = ({courses, addClass, preivewCourse, currnentCourses, removeCours
                     <div className='result-items'>
                         <Column horizontal='start' vertical='start'>
                             <Row>
-                                <h1>{course.title}</h1>
+                                <h1 className="class-title">{course.title}</h1>
                             </Row>
                             <p>{(course.firstname? course.firstname: "")  + " " + (course.lastname? course.lastname: "")}</p>
                             <p>{course.gur.length === 1? "GUR: " + course.gur[0]: null } </p>
