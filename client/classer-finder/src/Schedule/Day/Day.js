@@ -31,8 +31,6 @@ const getPixelsSizeFromTime = (sTime, eTime)=>{
     return (eTime - sTime) * (DAYHEIGHT /(ENDTIME - STARTTIME));
 }
 
-const Move = 1;
-
 const Day = ({day, data}) => {
 
     var classBlocks = [];
@@ -43,9 +41,8 @@ const Day = ({day, data}) => {
             let eTime = getIntFromString(data[i].time[day][1]);
 
             let style = {
-                "top": getPixelsStartFromTime(sTime) + i * Move,
+                "top": getPixelsStartFromTime(sTime),
                 "height": getPixelsSizeFromTime(sTime, eTime),
-                "left": i * Move,
                 "backgroundColor": CLASSCOLOR[i],
                 "width": "100%",
                 "position": "absolute",
