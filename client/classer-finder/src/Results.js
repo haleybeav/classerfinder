@@ -1,8 +1,7 @@
 import React from 'react';
 import './Results.css';
 import {Column,  Row} from 'simple-flexbox';
-
-
+import { courseInList} from './CourseHelpers';
 
 const getDays = (course) => {
     let s = ''
@@ -55,7 +54,7 @@ const Results = ({courses, addClass, preivewCourse, currnentCourses, removeCours
                             <h2>{course.dept} {course.course}</h2>
                             <h3>{course.crn}</h3>
                             {
-                                (currnentCourses.indexOf(course) === -1)?
+                                (!courseInList(course.crn, currnentCourses))?
                                 <button type='button' onClick={ (e) => addClass(course) }>Add Class</button>:                                                            
                                 <button type='button' onClick={ (e) => removeCourse(course) }>Remove</button>}
                         </Column>

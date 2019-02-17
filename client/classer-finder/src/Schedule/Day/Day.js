@@ -1,6 +1,7 @@
 import React from 'react';
 import './Day.css'
 import {CLASSCOLOR} from '../Colors';
+import {courseInList} from '../../CourseHelpers';
 const offset = 20;
 const DAYHEIGHT = 290;
 const STARTTIME = 8;
@@ -67,7 +68,7 @@ const Day = ({day, data, preview}) => {
         }        
     }
 
-    if(preview && preview.time[day] && !preview.time.tba){
+    if(preview && preview.time[day] && !preview.time.tba && !courseInList(preview.crn, data)){
         classBlocks.push(<Course key={preview.crn} opacity="0.6" course={preview} color={PREVIEWCOLOR} day={day} />);
     }
     

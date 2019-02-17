@@ -4,6 +4,7 @@ import Search from './Search';
 import Results from './Results';
 import Schedule from './Schedule/Schedule';
 import axios from 'axios';
+import {getIndexByCRN} from './CourseHelpers';
 
 class App extends Component {
   constructor(props) {
@@ -47,8 +48,7 @@ class App extends Component {
   }
 
   removeCourse = (course)=>{
-    let index = this.state.selected_courses.indexOf(course);
-    console.log("removing")
+    let index = getIndexByCRN(course.crn, this.state.selected_courses);    
     if(index !== -1) {
       this.state.selected_courses.splice(index, 1);
       this.setState({selected_courses: this.state.selected_courses});
@@ -58,8 +58,8 @@ class App extends Component {
   render() {
     return (
       <div className="app">              
-        <div className={this.state.selected_courses.length === 0? "empty-schedule": null + " working-area"}>
-          <div className={this.state.query_results.length === 0? "center": null + " search"}>
+        <div className={(this.state.selected_courses.length === 0? "empty-schedule": null) + " working-area"}>
+          <div className={this.state.query.length === 0? "center": null + " search"}>
           <Search  handleChange={this.handleChange}/>                    
           </div>
           <Results removeCourse={this.removeCourse} currnentCourses={this.state.selected_courses}  preivewCourse={this.preivewCourse} courses={this.state.query_results} addClass={this.addClass}/>
