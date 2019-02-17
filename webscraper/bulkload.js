@@ -1,4 +1,4 @@
-const classes = require("./classes");
+const classes = require("./classes_with_description");
 const fs = require('fs');
 
 

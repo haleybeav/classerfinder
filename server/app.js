@@ -23,15 +23,16 @@ app.get("/classes/:term", async (req, res)=>{
     const response = await client.searchTemplate({
         index: 'class',
         type: 'classlist',
-        body: {        
+        body: {            
             "source" : {
+                "from" : 0, 
+                "size" : 20,
                 "query": {
-                    "multi_match" : {
-                        "query" : "{{my_query}}",
-                        "fields" : ["dept^10", "course^9", "title^8", "crn", "instructor^7", "location"],
-                        "fuzziness": "AUTO"
+                    "query_string" : {
+                        "query": "{{my_query}}"
                     }
-                }
+                },
+                "_source": ["dept", "course", "title", "crn", "instructor", "location"]
             },
             "params" : {       
                 "my_query" : req.params.term
