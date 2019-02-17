@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 import Search from './Search';
 import Results from './Results';
 import Schedule from './Schedule/Schedule';
-import axios from 'axios';
 import {getIndexByCRN} from './CourseHelpers';
 
 class App extends Component {
