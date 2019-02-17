@@ -32,8 +32,9 @@ app.get("/classes/:term", async (req, res)=>{
              "query": {
                 "multi_match" : {
                    "query" : req.params.term,
-                   "fields" : ["dept^5", "course^4", "title^3", "description^2.5", "crn^2", "instructor^1.5", "location"],
-                   "fuzziness": "AUTO"
+                   "type":       "phrase",
+
+                   "fields" : ["dept^5", "course^4", "title^3", "description^2.5", "gur^4", "crn^2", "instructor^1.5", "location"],
                 }
             }
 
