@@ -8,6 +8,7 @@
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5",
     "simple-flexbox": "^1.2.0",
+    "universal-cookie": "^3.0.7",
     "unstated": "^2.1.1"
   },
   "scripts": {

@@ -10,19 +10,19 @@ function myFunction(crn) {
 }
 
 
-const Schedule = ({courses}) => {
+const Schedule = ({courses, removeCourse, courseToPreview}) => {
 
     let i = -1;
-    let classlist =  courses.map((course)=>{
+    let classlist = courses.map((course)=>{
         i = i + 1;
         let style={  "backgroundColor": CLASSCOLOR[i], }
         return (    
-        <div > 
+        <div key={course.crn} class="course-record"> 
             <button className="copy-button" style={style} onClick={()=>{myFunction(course.crn)}} >Copy CRN</button> 
             
             <div className="title"> { course.title} </div> 
-            <input value={course.crn} id={course.crn} className="crn" />
-            
+            <input readOnly value={course.crn} id={course.crn} className="crn" />
+            <button className="remove-button" onClick={()=>{removeCourse(course)}} >X</button> 
         </div>)
     });
     return (
@@ -33,11 +33,14 @@ const Schedule = ({courses}) => {
                     <div>12pm</div>                    
                     <div>6pm</div> 
                 </div>
-                <Day day="M" data={courses} />
-                <Day day="T" data={courses} />
-                <Day day="W" data={courses} />
-                <Day day="R" data={courses} />
-                <Day day="F" data={courses} />            
+                <div className="day-group">
+                <Day day="M" data={courses} preview={courseToPreview} />
+                <Day day="T" data={courses} preview={courseToPreview}  />
+                <Day day="W" data={courses} preview={courseToPreview}  />
+                <Day day="R" data={courses} preview={courseToPreview} />
+                <Day day="F" data={courses} preview={courseToPreview} />            
+                </div>
+                
                 <div className="vLine" />
                 <div className="class-list">
                     <h3> Selected Classes </h3>

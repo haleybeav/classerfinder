@@ -1,22 +1,13 @@
 .schedule-bar {
-    box-shadow: -1px 2px 15px rgba(0, 0, 0, 0.4);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    box-shadow: -1px 2px 15px rgba(0, 0, 0, 0.4);    
     display: flex;
     background-color: white;
     padding: 10px;
+    height: 30vh;
+    position: relative;
+    z-index: 2;
 }
 
-.dot{
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 100%;
-    margin-right: 10px;
-    margin-left: 10px;
-}
 
 .vLine{
     width: 2px;
@@ -24,8 +15,14 @@
     margin: 10px;
 }
 
+.day-group{
+    width: 70%;
+    display: flex;
+}
+
 .class-list{
     margin-left: 10px;
+    width: 30%;
 }
 
 .times{
@@ -54,7 +51,19 @@
     margin-right: 6px;
     opacity: 0.75;
 }
+
+.remove-button{
+    font-weight: 300;
+    width: 30px;
+    background-color: #FF372A;
+    float: right;
+}
+
 .title{
     display: inline-block;
     font-size: 1.2em;
+}
+
+.course-record{
+    margin-bottom: 5px;
 }

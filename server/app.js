@@ -22,6 +22,8 @@ var client = new elasticsearch.Client({
 
 app.get("/classes/:term", async (req, res)=>{
 
+    console.log(req.params.term);
+
     const response = await client.search({
       index: 'class',
       type: 'classlist',
@@ -33,7 +35,7 @@ app.get("/classes/:term", async (req, res)=>{
           "multi_match": {
             "query": req.params.term,
             "type": "phrase",
-            "fields": ["dept^5", "course^4", "title^3", "description^2.5", "gur^4", "crn^2", "instructor^1.5", "location"],
+            "fields": ["dept^5", "course^4", "title^3", "description^2.5", "gur^4", "crn^2", "lastname", "firstname"],
           }
         }
       }

@@ -3,6 +3,7 @@ import './Results.css';
 import {Column,  Row} from 'simple-flexbox';
 
 
+
 const getDays = (course) => {
     let s = ''
     if (course.time.M !== null) { s += 'M'}
@@ -20,23 +21,23 @@ const getTime = (course) => {
     else if (course.time.W !== null) { s += course.time.W[0] + '-' + course.time.W[1]}
     else if (course.time.R !== null) { s += course.time.R[0] + '-' + course.time.R[1]}
     else if (course.time.F !== null) { s += course.time.F[0] + '-' + course.time.F[1]}
-    else { s = 'TBD'}
+    else { s = 'TBD'}    
 
     return s;
 }
 
-const Results = ({courses, addClass}) => {
+const Results = ({courses, addClass, preivewCourse, currnentCourses, removeCourse}) => {
     return (
         <div className='resultTable'>
             { courses.map( (course) =>
-                <div className='result-box' key={course.crn}>
+                <div onMouseEnter={()=>{preivewCourse(course)}} onMouseLeave={()=>{preivewCourse(null)}} className='result-box' key={course.crn}>
                     <div className='result-items'>
                         <Column horizontal='start' vertical='start'>
                             <Row>
                                 <h1>{course.title}</h1>
-                                   
                             </Row>
-                            <p>{course.instructor}</p>
+                            <p>{(course.firstname? course.firstname: "")  + " " + (course.lastname? course.lastname: "")}</p>
+                            <p>{course.gur.length === 1? "GUR: " + course.gur[0]: null } </p>
                             <Row>
                                 <p><b>{getDays(course)} {getTime(course)} {course.location}</b></p>
                             </Row>
@@ -44,17 +45,19 @@ const Results = ({courses, addClass}) => {
                     </div>
                     <div className='result-items'>
                     <Column horizontal='center' vertical='center'>
-                        <h3 >3cr</h3>
-                        <p>GUR: ACOM</p>
-                        <p>Prereq: </p>
-                        <p>Additional Charges: </p> 
+                        <h3 >{course.credits}cr</h3>                        
+                        <p>Enrolled: {course.enrl}/{course.cap}</p>
+
                     </Column>
                     </div>
                     <div className='result-items'>
                         <Column horizontal='end' vertical='end'>
                             <h2>{course.dept} {course.course}</h2>
                             <h3>{course.crn}</h3>
-                            <button type='button' onClick={ (e) => addClass(course) }>Add Class</button>
+                            {
+                                (currnentCourses.indexOf(course) === -1)?
+                                <button type='button' onClick={ (e) => addClass(course) }>Add Class</button>:                                                            
+                                <button type='button' onClick={ (e) => removeCourse(course) }>Remove</button>}
                         </Column>
                     </div>
                 </div>

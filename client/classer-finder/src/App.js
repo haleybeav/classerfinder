@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Column, Row} from 'simple-flexbox';
 import Search from './Search';
 import Results from './Results';
 import Schedule from './Schedule/Schedule';
@@ -13,8 +12,17 @@ class App extends Component {
     this.state = {
       query: '',
       query_results: [],
-      selected_courses: []
+      selected_courses: [],
+      course_to_preview: null,
     }
+  }
+
+  preivewCourse = (course)=>{
+    if(course){
+      this.setState({course_to_preview: course});
+    }else{
+      this.setState({course_to_preview: null});
+    }    
   }
 
   handleChange = (e) => { 
@@ -28,6 +36,7 @@ class App extends Component {
       this.setState({ query_results: query_result.data })
     } else {
       this.setState({ query_results: [] })
+      this.setState({ course_to_preview: null })
     }
   }
 
@@ -37,25 +46,25 @@ class App extends Component {
     }
   }
 
+  removeCourse = (course)=>{
+    let index = this.state.selected_courses.indexOf(course);
+    console.log("removing")
+    if(index !== -1) {
+      this.state.selected_courses.splice(index, 1);
+      this.setState({selected_courses: this.state.selected_courses});
+    }
+  }
+
   render() {
     return (
-      <div>
-        <style>{'body{background-color: #FBFBFB;}'}</style>
-        <Column vertical = 'center' horizontal = 'center'>
-          <Row horizontal = 'center' vertical = 'center'>
-            <div>
-              <div>
-                <Column horizontal = 'center'>
-                  <h1>WWU ClasserFinder</h1>
-                </Column>
-              </div>
-              <Search handleChange={this.handleChange}/>
-              
-            </div>
-          </Row>
-        </Column>
-        <Results courses={this.state.query_results} addClass={this.addClass}/>
-        <Schedule courses={this.state.selected_courses}/>
+      <div className="app">              
+        <div className={this.state.selected_courses.length === 0? "empty-schedule": null + " working-area"}>
+          <div className={this.state.query_results.length === 0? "center": null + " search"}>
+          <Search  handleChange={this.handleChange}/>                    
+          </div>
+          <Results removeCourse={this.removeCourse} currnentCourses={this.state.selected_courses}  preivewCourse={this.preivewCourse} courses={this.state.query_results} addClass={this.addClass}/>
+        </div>  
+        <Schedule courseToPreview={this.state.course_to_preview} removeCourse={this.removeCourse} courses={this.state.selected_courses}/>
       </div>
     );
   }

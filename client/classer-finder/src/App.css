@@ -1,0 +1,29 @@
+.app{
+    overflow: hidden;
+    height: 100vh;
+    transition: height 0.5s ease;
+}
+
+.working-area{
+    height: 68vh;
+    width: 100vw;
+    overflow-y: scroll;    
+    transition: height 0.5s ease;
+}
+
+.empty-schedule{
+    height: 100vh;
+}
+
+.t-center{
+    text-align: center;    
+}
+
+.center{
+    margin-top: 40vh;    
+    transition: margin-top 0.5s ease;
+}
+.search{
+    margin-top: 0vh;
+    transition: margin-top 0.5s ease;
+}
