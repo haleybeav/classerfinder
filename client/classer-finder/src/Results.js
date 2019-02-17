@@ -2,7 +2,9 @@ import React from 'react';
 import './Results.css';
 import {Column,  Row} from 'simple-flexbox';
 
-const Results = ({courses, addClass}) => {
+const Results = ({courses, addClass, getDays, getTime}) => {
+    
+
     return (
         <div className='resultTable'>
             { courses.map( (course) =>

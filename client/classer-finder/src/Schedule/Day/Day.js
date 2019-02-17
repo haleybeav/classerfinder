@@ -1,6 +1,6 @@
 import React from 'react';
 import './Day.css'
-
+import {CLASSCOLOR} from '../Colors';
 const DAYHEIGHT = 300;
 const STARTTIME = 8;
 const ENDTIME = 18;
@@ -14,15 +14,6 @@ const DAYNAME = {
     "R": "Thursday",
     "F": "Friday"
 }
-
-const CLASSCOLOR = [
-    "#FFB800",
-    "#6EEB83",    
-    "#0CE0E8",
-    "#A20CE8",
-    "#E80CAA"
-]
-
 
 const getIntFromString = (str)=>{
     let time = str.split(":");
@@ -40,18 +31,21 @@ const getPixelsSizeFromTime = (sTime, eTime)=>{
     return (eTime - sTime) * (DAYHEIGHT /(ENDTIME - STARTTIME));
 }
 
+const Move = 1;
+
 const Day = ({day, data}) => {
+
     var classBlocks = [];
     for (var i = 0; i < data.length; i++) {
-
         if (data[i].time[day]){
 
             let sTime = getIntFromString(data[i].time[day][0]);
-            let eTime = getIntFromString(data[i].time[day][1]);            
+            let eTime = getIntFromString(data[i].time[day][1]);
 
-            let classStyle = {
-                "top": getPixelsStartFromTime(sTime),
+            let style = {
+                "top": getPixelsStartFromTime(sTime) + i * Move,
                 "height": getPixelsSizeFromTime(sTime, eTime),
+                "left": i * Move,
                 "backgroundColor": CLASSCOLOR[i],
                 "width": "100%",
                 "position": "absolute",
@@ -59,7 +53,7 @@ const Day = ({day, data}) => {
                 "margin": "2px"                
             };
     
-            classBlocks.push(<div className='class' style={classStyle} key={i}></div>);
+            classBlocks.push(<div className='class' style={style} key={i}></div>);
         }        
     }
     return (
