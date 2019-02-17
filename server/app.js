@@ -32,7 +32,6 @@ app.get("/classes/:term", async (req, res)=>{
                         "query": "{{my_query}}"
                     }
                 },
-                "_source": ["dept", "course", "title", "crn", "instructor", "location"]
             },
             "params" : {       
                 "my_query" : req.params.term

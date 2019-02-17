@@ -4,7 +4,7 @@ import {Column, Row} from 'simple-flexbox';
 import Search from './Search';
 import Results from './Results';
 import Schedule from './Schedule';
-
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -19,12 +19,14 @@ class App extends Component {
 
   handleChange = (e) => { 
     this.setState({ query: e.target.value })
+    this.handleElastic();
   }
 
-  handleElastic = () => {
+  handleElastic = async () => {
     // ASYNCH API CALL
-    //let query_result = await APICALL();
-    this.setState({ query_results: [] })
+    let query_result = []// await axios.get('localhost:8080/classes/' + this.state.query);
+    console.log('hello');
+    this.setState({ query_results: query_result })
     this.setState({ ready: true })
 
   }
