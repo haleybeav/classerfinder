@@ -3,13 +3,27 @@ import './Schedule.css'
 import Day from './Day/Day';
 import {CLASSCOLOR} from './Colors';
 
+function myFunction(crn) {
+    let copyText = document.getElementById(crn);
+    copyText.select();
+    document.execCommand("copy");
+}
+
+
 const Schedule = ({courses}) => {
 
     let i = -1;
     let classlist =  courses.map((course)=>{
         i = i + 1;
         let style={  "backgroundColor": CLASSCOLOR[i], }
-        return (    <div> <div className="dot" style={style}></div> { course.title} </div>)
+        return (    
+        <div > 
+            <button className="copy-button" style={style} onClick={()=>{myFunction(course.crn)}} >Copy CRN</button> 
+            
+            <div className="title"> { course.title} </div> 
+            <input value={course.crn} id={course.crn} className="crn" />
+            
+        </div>)
     });
     return (
         

@@ -47,7 +47,8 @@ const Day = ({day, data}) => {
                 "width": "100%",
                 "position": "absolute",
                 "borderRadius": "4px",
-                "margin": "2px"                
+                "margin": "2px",
+                "opacity": ".75"    
             };
     
             classBlocks.push(<div className='class' style={style} key={i}></div>);
