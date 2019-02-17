@@ -27,7 +27,7 @@ const getTime = (course) => {
 
 const Results = ({courses, addClass, preivewCourse, currnentCourses, removeCourse}) => {
     return (
-        <div className='resultTable'>
+        <div className='result-table'>
             { courses.map( (course) =>
                 <div onMouseEnter={()=>{preivewCourse(course)}} onMouseLeave={()=>{preivewCourse(null)}} className='result-box' key={course.crn}>
                     <div className='result-items'>

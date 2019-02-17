@@ -58,13 +58,16 @@ class App extends Component {
   render() {
     return (
       <div className="app">              
-        <div className={(this.state.selected_courses.length === 0? "empty-schedule": null) + " working-area"}>
-          <div className={this.state.query.length === 0? "center": null + " search"}>
+        <div className={(this.state.selected_courses.length === 0? "empty-schedule": "") + " working-area"}>
+          <div className={this.state.query.length === 0? "center": "" + " search"}>
           <Search  handleChange={this.handleChange}/>                    
           </div>
           <Results removeCourse={this.removeCourse} currnentCourses={this.state.selected_courses}  preivewCourse={this.preivewCourse} courses={this.state.query_results} addClass={this.addClass}/>
         </div>  
         <Schedule courseToPreview={this.state.course_to_preview} removeCourse={this.removeCourse} courses={this.state.selected_courses}/>
+
+        <div className="love">Made with &hearts; at WWU</div>
+
       </div>
     );
   }

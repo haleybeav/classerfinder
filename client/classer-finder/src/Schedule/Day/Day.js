@@ -48,13 +48,14 @@ const Course=({course, day, color, opacity})=>{
         "top": getPixelsStartFromTime(sTime),
         "height": getPixelsSizeFromTime(sTime, eTime),
         "backgroundColor": color,
-        "width": "100%",
         "position": "absolute",
         "borderRadius": "4px",
         "margin": "2px",
         "opacity": opacity,
         "color": "white",
-        "font-weight": "bold"
+        "font-weight": "bold",
+        "text-align": "left",
+        "padding": "3px"
     };
 
     return(<div className='class' style={style} >{course.title}</div>);

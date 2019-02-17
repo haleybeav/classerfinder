@@ -29,7 +29,7 @@ app.get("/classes/:term", async (req, res)=>{
       type: 'classlist',
       body: {
         "from": 0,
-        "size": 20,
+        "size": 200,
         "explain": true,
         "query": {
           "multi_match": {

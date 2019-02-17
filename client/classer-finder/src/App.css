@@ -27,3 +27,15 @@
     margin-top: 0vh;
     transition: margin-top 0.5s ease;
 }
+
+.love{
+    position: fixed;
+    top: 40px;
+    right: -115px;
+    transform: rotate(30deg);
+    background-color: #003f87;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    width: 400px;
+}
