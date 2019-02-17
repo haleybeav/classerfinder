@@ -17,6 +17,20 @@
     margin-right: 10px;
 }
 
+.vLine{
+    width: 2px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: 10px;
+}
+
 .class-list{
-    padding: 15px;
+    margin-left: 10px;
+}
+
+.times{
+    margin-top: 25px;
+    font-size: .8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
