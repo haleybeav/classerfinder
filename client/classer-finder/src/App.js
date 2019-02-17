@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import {Column, Row} from 'simple-flexbox';
 import Search from './Search';
+import Results from './Results';
+import Schedule from './Schedule';
 
 
 class App extends Component {
@@ -9,7 +11,9 @@ class App extends Component {
     super(props);
 
     this.state = {
-      query: ''
+      query: '',
+      query_results: [],
+      ready: false
     }
   }
 
@@ -17,22 +21,32 @@ class App extends Component {
     this.setState({ query: e.target.value })
   }
 
-  handleElastic = () => {}
+  handleElastic = () => {
+    // ASYNCH API CALL
+    //let query_result = await APICALL();
+    this.setState({ query_results: [] })
+    this.setState({ ready: true })
+
+  }
 
   render() {
     return (
-      <Column vertical = 'center' horizontal = 'center'>
-        <Row horizontal = 'center' vertical = 'center'>
-          <div>
+      <div>
+        <Column vertical = 'center' horizontal = 'center'>
+          <Row horizontal = 'center' vertical = 'center'>
             <div>
-              <Column horizontal = 'center'>
-                <h1>WWU ClasserFinder</h1>
-              </Column>
+              <div>
+                <Column horizontal = 'center'>
+                  <h1>WWU ClasserFinder</h1>
+                </Column>
+              </div>
+              <Search handleChange={this.handleChange}/>
+              {this.state.ready && <Results/>}
             </div>
-            <Search query={this.state.query} handleChange={this.handleChange}/>
-          </div>
-        </Row>
-      </Column>
+          </Row>
+        </Column>
+        <Schedule/>
+      </div>
     );
   }
 }

@@ -3,7 +3,7 @@ import search_icon from './icons/search3.png';
 import {Row} from 'simple-flexbox';
 import './Search.css'
 
-const Search = ({query, handleChange}) => {
+const Search = ({handleChange}) => {
     return (
         <div className='flex-search'>
             <Row horizontal = 'center' vertical = 'center'>
