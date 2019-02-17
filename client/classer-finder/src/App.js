@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       query: '',
       query_results: [],
-      ready: false
+      ready: false      
     }
   }
 
