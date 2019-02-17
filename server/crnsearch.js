@@ -26,36 +26,6 @@ app.get("/classes/:term", async (req, res)=>{
         index: 'class',
         type: 'classlist',
         body: {
-
-                "from" : 0,
-                "size" : 20,
-                "explain": true,
-                "query": {
-                    "query_string" : {
-                        "query": req.params.term
-                    }
-                },
-                "_source": ["dept", "course", "title", "crn", "instructor", "location"]
-
-            }
-
-    });
-
-    let outResults = [];
-
-    response.hits.hits.forEach((item)=>{
-        outResults.push(item._source);
-    })
-
-    res.send(outResults);
-});
-
-app.get("/classesbycrn/:term", async (req, res)=>{
-
-    const response = await client.search({
-        index: 'class',
-        type: 'classlist',
-        body: {
               "query": {
                 "match": {
                   "crn": req.params.term
@@ -72,5 +42,6 @@ app.get("/classesbycrn/:term", async (req, res)=>{
 
     res.send(outResults);
 });
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}! WOOOO HOOO`));
