@@ -60,7 +60,7 @@ const Course=({course, day, color, opacity})=>{
         "font-size": "11px"
     };
 
-    return(<div className='class' style={style} ><div className="class-title"> {course.title}</div></div>);
+    return(<div className='class' style={style} ><div className="class-title-two"> {course.title}</div></div>);
 
 }
 
