@@ -55,10 +55,12 @@ const Course=({course, day, color, opacity})=>{
         "color": "white",
         "font-weight": "bold",
         "text-align": "left",
-        "padding": "3px"
+        "width": "100%",
+        "max-width": "100%",
+        "font-size": "11px"
     };
 
-    return(<div className='class' style={style} >{course.title}</div>);
+    return(<div className='class' style={style} ><div className="class-title"> {course.title}</div></div>);
 
 }
 
