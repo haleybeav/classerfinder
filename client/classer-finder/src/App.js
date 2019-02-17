@@ -18,17 +18,16 @@ class App extends Component {
   }
 
   handleChange = (e) => { 
-    this.setState({ query: e.target.value })
-    this.handleElastic();
+    this.setState({ query: e.target.value });
+    this.handleElastic(e.target.value);
   }
 
-  handleElastic = async () => {
-    // ASYNCH API CALL
-    let query_result = []// await axios.get('localhost:8080/classes/' + this.state.query);
-    console.log('hello');
-    this.setState({ query_results: query_result })
-    this.setState({ ready: true })
-
+  handleElastic = async (value) => {
+    if(value){
+      let query_result = await axios.get('http://localhost:8080/classes/' + value);      
+      this.setState({ query_results: query_result.data })    
+      this.setState({ ready: true })
+    }
   }
 
   render() {
