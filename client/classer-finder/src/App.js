@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       query: '',
       query_results: [],
-      ready: false
+      selected_courses: []
     }
   }
 
@@ -25,8 +25,15 @@ class App extends Component {
   handleElastic = async (value) => {
     if(value){
       let query_result = await axios.get('http://localhost:8080/classes/' + value);      
-      this.setState({ query_results: query_result.data })    
-      this.setState({ ready: true })
+      this.setState({ query_results: query_result.data })
+    } else {
+      this.setState({ query_results: [] })
+    }
+  }
+
+  addClass = (course) => {
+    if (this.state.selected_courses.indexOf(course) === -1) {
+      this.setState({ selected_courses: [...this.state.selected_courses, course] })
     }
   }
 
@@ -46,7 +53,7 @@ class App extends Component {
             </div>
           </Row>
         </Column>
-        {this.state.ready && <Results courses={this.state.query_results}/>}
+        <Results courses={this.state.query_results} addClass={this.addClass}/>
         <Schedule/>
       </div>
     );
