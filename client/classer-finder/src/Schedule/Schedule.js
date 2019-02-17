@@ -1,18 +1,16 @@
 import React from 'react';
 import './Schedule.css'
 import Day from './Day/Day';
-import mockdata from './mockdata';
 
-
-const Schedule = () => {
+const Schedule = ({courses}) => {
     return (
         <div> 
             <div className='schedule-bar'>
-                <Day day="M" data={mockdata} />
-                <Day day="T" data={mockdata} />
-                <Day day="W" data={mockdata} />
-                <Day day="R" data={mockdata} />
-                <Day day="F" data={mockdata} />            
+                <Day day="M" data={courses} />
+                <Day day="T" data={courses} />
+                <Day day="W" data={courses} />
+                <Day day="R" data={courses} />
+                <Day day="F" data={courses} />            
             </div>
             <div>
                 O_O

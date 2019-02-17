@@ -54,7 +54,7 @@ class App extends Component {
           </Row>
         </Column>
         <Results courses={this.state.query_results} addClass={this.addClass}/>
-        <Schedule/>
+        <Schedule courses={this.state.selected_courses}/>
       </div>
     );
   }
