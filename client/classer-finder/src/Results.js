@@ -13,13 +13,21 @@ const Results = ({courses, addClass, getDays, getTime}) => {
                         <Column horizontal='start' vertical='start'>
                             <Row>
                                 <h1>{course.title}</h1>
-                                <p>3cr</p>    
+                                   
                             </Row>
                             <p>{course.instructor}</p>
                             <Row>
                                 <p><b>MTF 3:00-3:50pm {course.location}</b></p>
                             </Row>
                         </Column>
+                    </div>
+                    <div className='result-items'>
+                    <Column horizontal='center' vertical='center'>
+                        <h3 >3cr</h3>
+                        <p>GUR: ACOM</p>
+                        <p>Prereq: </p>
+                        <p>Additional Charges: </p> 
+                    </Column>
                     </div>
                     <div className='result-items'>
                         <Column horizontal='end' vertical='end'>
