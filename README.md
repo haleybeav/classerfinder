@@ -2,6 +2,8 @@
 *A More Better-er Approach to Class Finder*
 View your class selections in real-time as you build your schedule. Easily.  
 
+https://docs.google.com/presentation/d/1C9pMLzcSUKrX50lk4QppdfBLUpw60CBqhuPULdcLhB8/edit?usp=sharing
+
 
 # Features
 
