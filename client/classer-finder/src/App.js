@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   handleChange = (e) => { 
-    this.setState({ query: e.target.value });
+    this.setState({ query: e.target.value })
     this.handleElastic(e.target.value);
   }
 
@@ -42,10 +42,11 @@ class App extends Component {
                 </Column>
               </div>
               <Search handleChange={this.handleChange}/>
-              {this.state.ready && <Results/>}
+              
             </div>
           </Row>
         </Column>
+        {this.state.ready && <Results courses={this.state.query_results}/>}
         <Schedule/>
       </div>
     );
