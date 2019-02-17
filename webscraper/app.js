@@ -140,7 +140,7 @@ function buildTimeObj(string){
             record.location =  await page.evaluate(element => element.textContent, locationel);
 
             //credits
-            const creditel = await rowTwo[3].$("font");
+            const creditel = await rowTwo[4].$("font");
             record.credits =  await page.evaluate(element => element.textContent, creditel);
             classList.push(record);
             i = i + 3;
