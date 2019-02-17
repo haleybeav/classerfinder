@@ -1,34 +1,52 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Column, Row} from 'simple-flexbox';
-import search_icon from './icons/search3.png';
+import Search from './Search';
+import Results from './Results';
+import Schedule from './Schedule';
+
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      query: ''
+      query: '',
+      query_results: [],
+      ready: false
     }
+  }
+
+  handleChange = (e) => { 
+    this.setState({ query: e.target.value })
+  }
+
+  handleElastic = () => {
+    // ASYNCH API CALL
+    //let query_result = await APICALL();
+    this.setState({ query_results: [] })
+    this.setState({ ready: true })
+
   }
 
   render() {
     return (
-      <Column vertical = 'center' horizontal = 'center'>
-        <Row horizontal = 'center' vertical = 'center'>
-          <div>
-              <Column horizontal = 'center'>
-                <h1>WWU ClasserFinder</h1>
-              </Column>
-            <div className='flex-search'>
-              <Row horizontal = 'center' vertical = 'center'>
-                <input className='search-bar' type='text' onChange={ (e) => this.setState({ query: e.target.value })}></input>
-              </Row>
-              <img className='search-icon' src={search_icon} alt='magnifying glass'></img>
+      <div>
+        <Column vertical = 'center' horizontal = 'center'>
+          <Row horizontal = 'center' vertical = 'center'>
+            <div>
+              <div>
+                <Column horizontal = 'center'>
+                  <h1>WWU ClasserFinder</h1>
+                </Column>
+              </div>
+              <Search handleChange={this.handleChange}/>
+              {this.state.ready && <Results/>}
             </div>
-          </div>
-        </Row>
-      </Column>
+          </Row>
+        </Column>
+        <Schedule/>
+      </div>
     );
   }
 }
