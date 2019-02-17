@@ -3,7 +3,7 @@ import './App.css';
 import {Column, Row} from 'simple-flexbox';
 import Search from './Search';
 import Results from './Results';
-import Schedule from './Schedule';
+import Schedule from './Schedule/Schedule';
 import axios from 'axios';
 
 class App extends Component {

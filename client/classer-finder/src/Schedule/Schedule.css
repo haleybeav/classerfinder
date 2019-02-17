@@ -1,10 +1,10 @@
 .schedule-bar {
     box-shadow: -1px 2px 15px rgba(0, 0, 0, 0.4);
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    display: inline-block;
+    display: flex;
 }
 
 .schedule-table {
@@ -14,4 +14,5 @@
 
 .schedule-classes {
     float: right;
+    flex-grow: 2
 }
