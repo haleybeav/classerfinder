@@ -1,0 +1,108 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.flex-search {
+  width: 400px;
+  height: 80px;
+  box-shadow: -1px 2px 15px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;      </div>
+2
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  width: 300px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.search-icon {
+  border-top: 10px solid white;
+  border-right: 10px solid white;
+  width: 50px;
+  height: 50px;
+  transform: scaleX(-1);
+}
+
+.resultTable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40%;
+  padding-block-start: 100px;
+  flex-wrap: wrap;
+}
+.result-box{
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  box-shadow: -1px 2px 15px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px; 
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0.5em;
+}
+
+.result-items{
+  flex: auto;
+  width: 33%;
+  height: 100%;
+}
+
+h1{
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+}
+h2{
+  margin-block-start: 0.2em;
+  margin-block-end: 0.4em;
+}
+h3{
+  margin-block-start: 0.15em;
+  margin-block-end: 0.4em;
+}
+p{
+  margin-block-start: 0.1em;
+  margin-block-end: 0.1em;
+  color: #5e6166;
+}
