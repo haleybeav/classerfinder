@@ -36,9 +36,7 @@
   width: 400px;
   height: 80px;
   box-shadow: -1px 2px 15px rgba(0, 0, 0, 0.4);
-  border-radius: 10px;      </div>
-2
-
+  border-radius: 10px; 
   display: flex;
   flex-direction: row;
   justify-content: center;
