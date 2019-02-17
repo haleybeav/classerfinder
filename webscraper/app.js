@@ -8,7 +8,7 @@ let classList = [];
 
 
 function buildTimeObj(string){
-    
+
     obj = {
         TBA: false,
         M: null,
@@ -30,8 +30,8 @@ function buildTimeObj(string){
     let times =  words[3].split("-");
 
     if (ending == "pm"){
-        
-        
+
+
         let ehrs =  times[1].split(":")[0];
         let emins =  times[1].split(":")[1];
         ehrs = parseInt(ehrs);
@@ -46,7 +46,7 @@ function buildTimeObj(string){
         }
         times[0] = shrs + ":" + smins;
         times[1] = ehrs + ":" + emins;
-            
+
     }
 
     for(let i = 0; i < days.length; i++){
@@ -61,10 +61,10 @@ function buildTimeObj(string){
     const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
     await page.goto(CFURL, {waitUntil: 'networkidle2'});
-    
+
     await page.click('[value="Search Now"]');
     await page.waitForNavigation({ waitUntil: 'networkidle2' });
-    
+
     const classes = await page.$$("tbody");
     const classblock = classes[1];
     const classtr = await classblock.$$("tr");
@@ -72,7 +72,7 @@ function buildTimeObj(string){
     let i =3
     while( i < classtr.length){
         let record = {};
-        
+
         found = false;
 
         let hasAlign =  await page.evaluate(element => element.getAttribute("align"), classtr[i]);
@@ -81,14 +81,14 @@ function buildTimeObj(string){
             const classname = await rowOne[1].$("a");
             if(classname){
                 found = true;
-            }            
+            }
         }
 
         if(found){
                 //class "ACCT 240"
             const rowOne = await classtr[i].$$("td");
             const classname = await rowOne[1].$("a");
-            
+
             let classnametext =  await page.evaluate(element => element.textContent, classname);
 
             record.dept = classnametext.split(" ")[0];
@@ -113,15 +113,18 @@ function buildTimeObj(string){
 
             //instructor
             const instructorel = await rowOne[7].$("font");
-            record.instructor =  await page.evaluate(element => element.textContent, instructorel);
 
+            let name =  await page.evaluate(element => element.textContent, instructorel);
+            name = name.split(",");
+            record.firstname = name[1];
+            record.lastname = name[0];
 
             const rowTwo = await classtr[i + 1].$$("td");
 
             //
-            const gurel = await rowTwo[1].$("font"); 
+            const gurel = await rowTwo[1].$("font");
             const gurtext =  await page.evaluate(element => element.textContent, gurel);
-            
+
             let gurArray = gurtext.split(" ");
             record.gur = gurArray.filter( (el)=> {
                 return el != "";
@@ -137,7 +140,7 @@ function buildTimeObj(string){
             const locationel = await rowTwo[3].$("font");
             record.location =  await page.evaluate(element => element.textContent, locationel);
 
-            //credits    
+            //credits
             const creditel = await rowTwo[3].$("font");
             record.credits =  await page.evaluate(element => element.textContent, creditel);
             classList.push(record);
@@ -145,8 +148,8 @@ function buildTimeObj(string){
         }else{
             i++;
         }
-        
-        
+
+
     }
 
 
@@ -155,6 +158,6 @@ function buildTimeObj(string){
     fs.writeFile('classes.json', json, 'utf8',async ()=>{
         await browser.close();
     });
-    
+
 
 })();
