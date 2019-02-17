@@ -1,0 +1,54 @@
+[{
+    "dept": "CSCI",
+    "course": "591",
+    "title": "Graduate Seminar II",
+    "crn": "23042",
+    "cap": "35",
+    "enrl": "0",
+    "instructor": "Liu, Yudong",
+    "gur": [],
+    "time": {
+        "TBA": false,
+        "M": [
+            "12:00",
+            "12:50"
+        ],
+        "T": [
+            "12:00",
+            "12:50"
+        ],
+        "W": null,
+        "R": null,
+        "F": null
+    },
+    "location": "CF 105 ",
+    "credits": "CF 105 ",
+    "description": "Students will discuss state-of-the-art computer science research papers in various topics. External speakers may be invited. The objectives are to expose students to a wide range of state-of-the-art research topics and to provide opportunities for students to share research experiences.  Each student will read and give a presentation on a Computer Science research paper to other students in CSCI 590 and CSCI 591. Repeatable to a maximum of 6 credits. S/U grading. "
+},
+{
+    "dept": "CSCI",
+    "course": "591",
+    "title": "Graduate Seminar II",
+    "crn": "23042",
+    "cap": "35",
+    "enrl": "0",
+    "instructor": "Liu, Yudong",
+    "gur": [],
+    "time": {
+        "TBA": false,
+        "M": [
+            "13:00",
+            "13:50"
+        ],
+        "T": [
+            "13:00",
+            "13:50"
+        ],
+        "W": null,
+        "R": null,
+        "F": null
+    },
+    "location": "CF 105 ",
+    "credits": "CF 105 ",
+    "description": "Students will discuss state-of-the-art computer science research papers in various topics. External speakers may be invited. The objectives are to expose students to a wide range of state-of-the-art research topics and to provide opportunities for students to share research experiences.  Each student will read and give a presentation on a Computer Science research paper to other students in CSCI 590 and CSCI 591. Repeatable to a maximum of 6 credits. S/U grading. "
+}]
