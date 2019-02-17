@@ -33,6 +33,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <style>{'body{background-color: #FBFBFB;}'}</style>
         <Column vertical = 'center' horizontal = 'center'>
           <Row horizontal = 'center' vertical = 'center'>
             <div>
