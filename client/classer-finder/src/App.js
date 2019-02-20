@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 import './App.css';
 import Search from './Search';
 import Results from './Results';
 import Schedule from './Schedule/Schedule';
 import {getIndexByCRN} from './CourseHelpers';
+
+
 
 class App extends Component {
   constructor(props) {
@@ -18,9 +21,19 @@ class App extends Component {
     }
   }
 
+  cookies = new Cookies();
+
+  componentDidMount(){
+    
+    let courses = this.cookies.get("courses");
+    if(courses){
+      this.setState({selected_courses: courses});
+    }
+  }
+
   preivewCourse = (course)=>{
     if(course){
-      this.setState({course_to_preview: course});
+      this.setState({course_to_preview: course});      
     }else{
       this.setState({course_to_preview: null});
     }    
@@ -44,7 +57,8 @@ class App extends Component {
   addClass = (course) => {
     if (this.state.selected_courses.indexOf(course) === -1) {
       this.setState({ selected_courses: [...this.state.selected_courses, course] })
-    }
+      this.cookies.set("courses", [...this.state.selected_courses, course]);
+    }    
   }
 
   removeCourse = (course)=>{
@@ -52,6 +66,7 @@ class App extends Component {
     if(index !== -1) {
       this.state.selected_courses.splice(index, 1);
       this.setState({selected_courses: this.state.selected_courses});
+      this.cookies.set("courses", this.state.selected_courses);
     }
   }
 
