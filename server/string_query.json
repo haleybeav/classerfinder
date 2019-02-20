@@ -1,0 +1,12 @@
+{
+    "from": 0,
+    "size": 200,
+    "explain": true,
+    "query": {
+        "query_string": {
+            "query": "*nelso*",
+            "type": "cross_fields",
+            "fields": ["dept^5", "course^4", "title^3", "description", "gur^4", "crn^2", "lastname^5", "firstname"]
+        }
+    }
+}
