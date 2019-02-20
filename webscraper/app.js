@@ -34,7 +34,10 @@ function buildTimeObj(string){
         let ehrs =  times[1].split(":")[0];
         let emins =  times[1].split(":")[1];
         ehrs = parseInt(ehrs);
-        ehrs = ehrs + 12;
+        if(ehrs < 12){
+            ehrs = ehrs + 12;
+        }
+        
 
         let shrs = times[0].split(":")[0];
         let smins =  times[0].split(":")[1];
