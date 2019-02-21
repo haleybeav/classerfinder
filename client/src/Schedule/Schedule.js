@@ -22,7 +22,7 @@ const Schedule = ({courses, removeCourse, courseToPreview}) => {
         i = i + 1;
         let style={  "backgroundColor": CLASSCOLOR[i], }
         return (    
-        <div key={course.crn} class="course-record"> 
+        <div key={course.crn} className="course-record"> 
             <button className="copy-button" style={style} onClick={()=>{myFunction(course.crn)}} >Copy CRN</button> 
             
             <div className="title"> { course.title} </div> 
