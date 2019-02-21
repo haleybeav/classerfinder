@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <div className="app">              
         <div className={(this.state.selected_courses.length === 0? "empty-schedule": "") + " working-area"}>
-          <div className={this.state.query.length === 0? "center": "" + " search"}>
+          <div className={(this.state.query.length === 0 ? "center" : "") + " search"}>
           <Search  handleChange={this.handleChange}/>                    
           </div>
           <Results removeCourse={this.removeCourse} currnentCourses={this.state.selected_courses}  preivewCourse={this.preivewCourse} courses={this.state.query_results} addClass={this.addClass}/>
