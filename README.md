@@ -9,9 +9,9 @@ Why did we make this? Check out our presentation [here](https://docs.google.com/
 # Features
 
 ### Technologies
-* [ReactJS] - 
-* [node.js] - 
-* [ElasticSearch] -
+* [ReactJS](https://reactjs.org/)
+* [node.js](https://nodejs.org/en/) 
+* [ElasticSearch](https://www.elastic.co/)
  
 ### Installation
 
