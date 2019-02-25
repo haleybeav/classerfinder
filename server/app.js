@@ -22,9 +22,9 @@ var client = new elasticsearch.Client({
 
 app.get("/classes/:term", async (req, res)=>{
 
-
+  let response ;
   try {
-    const response = await client.search({
+    response = await client.search({
       index: 'class',
       type: 'classlist',
       body: {
